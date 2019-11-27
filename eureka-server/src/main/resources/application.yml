@@ -1,0 +1,26 @@
+server:
+  port: 8000
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+    registryFetchIntervalSeconds: 10
+    fetch-registry: false
+    register-with-eureka: false
+  server:
+    evictionIntervalTimerInMs: 4000
+spring:
+  application:
+    name: eureka-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: eureka-register
