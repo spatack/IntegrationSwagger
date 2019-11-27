@@ -12,6 +12,9 @@
 **/.springBeans
 **/.sts4-cache
 
+### Mac OSX
+.DS_Store
+
 ### IntelliJ IDEA ###
 .idea
 **/.idea
