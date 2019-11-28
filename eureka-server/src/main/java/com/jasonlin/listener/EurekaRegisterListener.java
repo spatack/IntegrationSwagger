@@ -20,8 +20,8 @@ public class EurekaRegisterListener implements ApplicationListener<EurekaInstanc
 
     @Override
     public void onApplicationEvent(EurekaInstanceRegisteredEvent eurekaInstanceRegisteredEvent) {
-        LOGGER.info("Eureka Client Registered");
         if (eurekaInstanceRegisteredEvent.isReplication()) {
+            LOGGER.info("Eureka Client Registered : {}", eurekaInstanceRegisteredEvent.getInstanceInfo().getAppName());
             source.output().send ((MessageBuilder.withPayload(eurekaInstanceRegisteredEvent.getInstanceInfo()).build()));
         }
     }
