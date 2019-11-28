@@ -1,5 +1,5 @@
 server:
-  port: 8010
+  port: 8080
 
 eureka:
   instance:
@@ -20,6 +20,13 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true # enable lowercase for service id
+      routes:
+        - id: job-service
+          uri: lb://job-service #from eureka server
+          predicates:
+            - Path= /job/**
+          filters:
+            - StripPrefix=1  #example localhost:8080/job/v2/api-doc -> localhost:8020/v2/api-doc
     stream:
       bindings:
         input:
